@@ -1,0 +1,24 @@
+fruit analyser
+
+
+installation -- 
+	npm install 
+	npm start
+
+
+
+api supported!
+	POST -- /info  
+
+
+
+supported fruits -
+apple,
+banana,
+orange,
+grapes,
+kiwi,
+chickoo,
+watermelon,
+muldmelon
+
