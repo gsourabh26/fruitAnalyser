@@ -14,11 +14,17 @@ app.use(bodyParser.urlencoded({ limit: '2000mb',extended: true }));
 app.use(multipart()); 
 
 app.post('/info', (req, res) => {
-	fr.getImageInfoFromRequest(req.files, (err, fruitName)=>{
+	var files = req.files;
+	var isPath = true;
+	if(req.body.file){
+		files = req.body.file;
+		isPath = false;
+	}
+	fr.getImageInfoFromRequest(files, isPath, (err, fruitName)=>{
 		if(err){
-			res.status(500).send(err);
+			res.status(500).send(JSON.stringify({error: err}));
 		}else{
-			res.status(200).send(fruitName);
+			res.status(200).send(JSON.stringify({name: fruitName}));
 		}
 	});
 })
